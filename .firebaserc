@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "sumonaye-porfolio",
+    "prod": "sumonaye-porfolio"
+  },
+  "targets": {},
+  "etags": {}
+}
