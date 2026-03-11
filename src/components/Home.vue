@@ -1,4 +1,21 @@
 <script setup>
+import { useI18n } from "vue-i18n";
+
+const supportedLanguages = [
+  {
+    code: "en",
+    name: "supported_languages.english",
+  },
+  {
+    code: "jp",
+    name: "supported_languages.japan",
+  },
+
+];
+const { locale } = useI18n();
+const changeLanguage = (event) => {
+  locale.value = event.target.value
+}
 </script>
 
 <template>
@@ -6,15 +23,16 @@
     <!-- Header -->
     <header class="bg-gray-800 p-4">
       <nav class="container mx-auto flex justify-between">
-        <h1 class="text-2xl font-bold">My Portfolio</h1>
+        <h1 class="text-2xl font-bold">{{ $t("home.my_porfolio") }}</h1>
         <ul class="flex space-x-4">
-          <li><a href="#about" class="hover:text-gray-400">About</a></li>
-          <li><a href="#projects" class="hover:text-gray-400">Projects</a></li>
-          <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+          <li><a href="#about" class="hover:text-gray-400">{{ $t("home.about") }}</a></li>
+          <li><a href="#projects" class="hover:text-gray-400">{{ $t("home.projects") }}</a></li>
+          <li><a href="#contact" class="hover:text-gray-400">{{ $t("home.contact") }}</a></li>
           <li>
-            <select class="bg-gray-800 text-white rounded p-1">
-              <option value="en">EN</option>
-              <option value="es">ES</option>
+            <select class="bg-gray-800 text-white rounded p-1" @change="changeLanguage($event)">
+              <option v-for="language in supportedLanguages" :value="language.code">{{
+                $t(language.name) }}</option>
+              <!-- <option value="es">ES</option> -->
             </select>
           </li>
         </ul>
@@ -31,8 +49,8 @@
     <section id="about" class="container mx-auto py-20">
       <h3 class="text-3xl font-bold text-center">About Me</h3>
       <div class="mt-8 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/3 text-center">
-          <img src="https://via.placeholder.com/150" alt="Profile Picture" class="rounded-full mx-auto">
+        <div class="md:w-1/3 text-center object-cover">
+          <img src="/avatorPhoto.jpg" alt="Profile Picture" class="rounded-full mx-auto">
         </div>
         <div class="md:w-2/3 mt-8 md:mt-0 md:pl-8">
           <p>
