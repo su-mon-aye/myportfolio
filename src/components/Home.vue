@@ -25,25 +25,25 @@ const projects = [
   {
     title: 'projects.project_one.title',
     description: 'projects.project_one.description',
-    images: ['/src/assets/photos/image1.png', '/src/assets/photos/image2.png', '/src/assets/photos/image3.png'],
+    images: ['/photos/image1.png', '/photos/image2.png', '/photos/image3.png'],
     link: '#'
   },
   {
     title: 'projects.project_two.title',
     description: 'projects.project_two.description',
-    images: ['/src/assets/photos/pyan_lwar_image1.png', '/src/assets/photos/pyan_lwar_image2.png', '/src/assets/photos/pyan_lwar_image3.png'],
+    images: ['/photos/pyan_lwar_image1.png', '/photos/pyan_lwar_image2.png', '/photos/pyan_lwar_image3.png'],
     link: '#'
   },
   {
     title: 'projects.project_three.title',
     description: 'projects.project_three.description',
-    images: ['/src/assets/photos/aps_image1.png', '/src/assets/photos/aps_image2.png', '/src/assets/photos/aps_image3.png'],
+    images: ['/photos/aps_image1.png', '/photos/aps_image2.png', '/photos/aps_image3.png'],
     link: '#'
   },
   {
     title: 'projects.project_three.title',
     description: 'projects.project_three.description',
-    images: ['/src/assets/photos/fcs_image1.png', '/src/assets/photos/fcs_image1.png', '/src/assets/photos/image3.png'],
+    images: ['/photos/fcs_image1.png', '/photos/fcs_image1.png', '/photos/image3.png'],
     link: '#'
   }
 ];
