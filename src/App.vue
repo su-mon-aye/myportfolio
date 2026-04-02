@@ -1,10 +1,10 @@
 <script setup>
-import Home from './components/Home.vue';
+
 </script>
 
 <template>
   <main>
-    <Home/>
+    <RouterView class="p-5"></RouterView>
   </main>
 </template>
 
