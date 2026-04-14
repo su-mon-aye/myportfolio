@@ -147,7 +147,7 @@ const projects = [
    <IconClose v-show="display"  class="w-6 h-6" />
 </button>
         <Dialog v-model:visible="display"  dismissableMask :closable="false" 
-        :showHeader="false" position="right" class="!absolute !top-10 !right-7 !md:hidden"
+        :showHeader="false" position="right" class="!absolute !top-10 !right-7 md:!hidden"
          
          :style="{ width: '50vw' }">
 <ul class="gap-6 flex flex-col">
@@ -212,7 +212,7 @@ const projects = [
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-2 md:py-20">
+    <section id="projects" class="py-2 md:py-10">
       <div class=" mx-auto">
         <h3 class="text-3xl font-bold text-center">{{ $t("home.projects") }}</h3>
         <div class="mt-8 flex flex-col">
@@ -251,7 +251,7 @@ const projects = [
       </div>
     </section>
 
-    <section id="contact" class="py-2 md:py-20">
+    <section id="contact" class="py-2 md:py-10">
       <div class="container mx-auto text-center">
         <h3 class="text-3xl font-bold">{{ $t("home.contact") }}</h3>
         <div class="mt-8 flex justify-center items-center space-x-6">
@@ -288,7 +288,7 @@ const projects = [
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-center">
+    <footer class=" text-center">
       <p>&copy; 2026 {{ $t("home.footer_text") }}</p>
     </footer>
   </main>
