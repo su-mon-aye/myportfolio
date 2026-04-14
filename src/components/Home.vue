@@ -14,6 +14,10 @@ import IconGithub from "./icons/IconGithub.vue";
 import IconPhone from "./icons/IconPhone.vue";
 import IconLinkedIn from "./icons/IconLinkedIn.vue";
 import IconEmail from "./icons/IconEmail.vue";
+import { Button, Dialog } from "primevue";
+import IconMenu from "./icons/IconMenu.vue";
+import IconClose from "./icons/IconClose.vue";
+
 
 const supportedLanguages = [
   {
@@ -29,6 +33,7 @@ const supportedLanguages = [
 const currentRouteName = computed(() => router.currentRoute.value.name);
 const { locale } = useI18n();
 const selectedLang=ref()
+const display=ref(false)
 const changeLanguage = (event) => {
   locale.value = event.target.value
   router.replace({ name: currentRouteName.value, query: { lang: event.target.value } })
@@ -111,10 +116,10 @@ const projects = [
 <template>
   <main class="min-h-screen bg-gray-900 text-white font-roboto">
     <!-- Header -->
-    <header class="bg-gray-800 sticky top-0 mt-[-50px] h-[50px]">
+    <header class="bg-gray-800 sticky top-0 mt-[-50px] h-[50px] -mx-5">
       <nav class="flex justify-between items-center w-full h-full px-2">
         <h1 class="text-2xl font-bold">{{ $t("home.my_porfolio") }}</h1>
-        <ul class="flex space-x-4">
+        <ul class=" space-x-4  md:flex hidden">
           <li><a href="#about" key="about"  :class="[
         'cursor-pointer hover:underline',
         activeSection === 'about' ? 'text-blue-500 font-bold' : 'text-gray-500'
@@ -134,11 +139,42 @@ const projects = [
             </select>
           </li>
         </ul>
+         <button 
+    class="md:hidden block"
+    @click="display = !display"
+  >
+  <IconMenu v-show="!display" class="w-6 h-6" />
+   <IconClose v-show="display"  class="w-6 h-6" />
+</button>
+        <Dialog v-model:visible="display"  dismissableMask :closable="false" 
+        :showHeader="false" position="right" class="!absolute !top-10 !right-7 !md:hidden"
+         
+         :style="{ width: '50vw' }">
+<ul class="gap-6 flex flex-col">
+          <li @click="display = false"><a href="#about" key="about"  :class="[
+        'cursor-pointer hover:underline',
+        activeSection === 'about' ? 'text-blue-500 font-bold' : 'text-gray-500'
+      ]">{{ $t("home.about") }}</a></li>
+          <li @click="display = false"><a href="#projects" key="projects"  :class="[
+        'cursor-pointer hover:underline',
+        activeSection === 'projects' ? 'text-blue-500 font-bold' : 'text-gray-500'
+      ]">{{ $t("home.projects") }}</a></li>
+          <li @click="display = false"><a href="#contact" key="contact"  :class="[
+        'cursor-pointer hover:underline',
+        activeSection === 'contact' ? 'text-blue-500 font-bold' : 'text-gray-500'
+      ]">{{ $t("home.contact") }}</a></li>
+          <li>
+            <select class="bg-gray-800 text-white rounded p-1" v-model="selectedLang" @change="changeLanguage($event)">
+              <option v-for="language in supportedLanguages" :value="language.code">{{
+                $t(language.name) }}</option>
+            </select>
+          </li>
+        </ul>        </Dialog>
       </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="container mx-auto text-center py-10">
+    <section class="container mx-auto text-center py-3 md:py-10 pt-10">
       <h2 class="text-4xl font-bold">{{ $t("home.welcome_title") }}</h2>
       <p class="mt-4 text-lg">{{ $t("home.welcome_text") }}</p>
     </section>
@@ -176,22 +212,22 @@ const projects = [
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
+    <section id="projects" class="py-2 md:py-20">
       <div class=" mx-auto">
         <h3 class="text-3xl font-bold text-center">{{ $t("home.projects") }}</h3>
         <div class="mt-8 flex flex-col">
 
           <div v-for="project in projects" :key="project.title"
-            class="bg-gray-700 rounded-lg flex flex-col md:flex-row gap-10 mb-8 p-4 mx-[5%]">
-            <div v-if="project.images && project.images.length" class="flex flex-row gap-2 w-[80%] md:w-[50%] shrink-0">
+            class="bg-gray-700 rounded-lg flex flex-col md:flex-row gap-1 md:gap-10 mb-8 p-4 md:mx-[5%]">
+            <div v-if="project.images && project.images.length" class="flex flex-row gap-2 w-[93%] md:w-[50%] shrink-0">
               <img v-for="value in project.images" :src="value" :key="value" alt="Project Image"
                 class="object-cover w-1/3 rounded-lg flex-1">
             </div>
             <div v-else
-              class="w-[80%] md:w-[50%] shrink-0 flex items-center justify-center bg-gray-800 rounded-lg text-gray-400">
+              class="w-[100%] md:w-[50%] shrink-0 flex items-center justify-center bg-gray-800 rounded-lg text-gray-400">
               No image available
             </div>
-            <div class="p-6">
+            <div class="p-1 py-3 md:py-6 md:p-6 ">
               <div class="flex gap-2 items-center">
                 <IconProjectTitle class="w-4 h-4 text-gray-400" />
                 <h4 class="text-xl font-bold">{{ $t(project.title) }}</h4>
@@ -215,7 +251,7 @@ const projects = [
       </div>
     </section>
 
-    <section id="contact" class="py-20">
+    <section id="contact" class="py-2 md:py-20">
       <div class="container mx-auto text-center">
         <h3 class="text-3xl font-bold">{{ $t("home.contact") }}</h3>
         <div class="mt-8 flex justify-center items-center space-x-6">
