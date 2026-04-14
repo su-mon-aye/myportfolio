@@ -186,13 +186,13 @@ const projects = [
         <img src="/avatorPhoto.jpg" alt="Profile Picture"
           class="w-[200px] h-3/4 md:w-1/4 rounded-full mx-auto shadow-sm">
 
-        <div class="md:w-2/3 mt-8 md:mt-0 md:pl-8">
+        <div class=" mx-7 w-full md:w-2/3 mt-8 md:mt-0 md:pl-8">
           <p>
             {{ $t("home.about_text") }}
           </p>
           <div class="mt-8">
             <h1>{{ $t("home.lang_intro") }}</h1>
-          <div class="flex gap-[18%]">
+          <div class="flex gap-4 md:gap-[18%]">
             <!-- first language section -->
               <ul class="list-disc marker:text-gray-500 p-[20px]">
               <li v-for="lang in firstlangs" :key="lang">
@@ -201,7 +201,7 @@ const projects = [
             </ul>
              <!-- second language section -->
               <ul class="list-disc marker:text-gray-500 p-[20px] ">
-              <li class="text-wrap" v-for="lang in secondlangs" :key="lang">
+              <li class="" v-for="lang in secondlangs" :key="lang">
                 {{ lang }}
               </li>
             </ul>
